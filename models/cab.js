@@ -36,4 +36,5 @@ const CabSchema = new mongoose.Schema({
 	}
 });
 
-const Cab = mongoose.model('cab', CabSchema); 
+const Cab = mongoose.model('cab', CabSchema);
+module.exports = Cab;

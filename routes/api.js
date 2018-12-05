@@ -8,5 +8,14 @@ router.get('/', (req, res) => {
 	res.send({success: true});
 });
 
+router.post('/add', (req, res) => {
+	Cab.create(req.body).then(cab => {
+		res.send({ 
+			success: true,
+			data: cab 
+		});
+	});
+});
+
 // Export router
 module.exports = router;
