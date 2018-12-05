@@ -1,4 +1,4 @@
-# CASA: **CA**b **S**haring **A**pi
+#  :poultry_leg: CASA: **CA**b **S**haring **A**pi
 API for cab sharing posts. Currently work in progress.
 # Methods
 ## Adding a new offer (POST to `/api/add`)
@@ -66,3 +66,33 @@ Response data:
 ```
 * `success`: `true` if the data was deleted from the database successfully, `false` otherwise.
 * `data`: The data deleted from the database. Returned only if `success` is `true`.
+## Updating an offer (PUT to `/api/update/{id}`)
+Send a put request in the following format to `/api/update/{id}`, where `id` is the unique identifier returned during creation of the offer.
+```javascript
+{
+	"name" : "New Guy"
+}
+```
+Response data:
+```javascript
+{
+    "success": true,
+    "data": {
+        "_id": "5c07cb45ba3c9d03ba43940f",
+        "name": "New Guy",
+        "phone": "9988776655",
+        "email": "test@gmail.com",
+        "source": "IIT Kharagpur",
+        "dest": "Kolkata Airport",
+        "slot": {
+            "_id": "5c07cb45ba3c9d03ba439410",
+            "startTime": "2014-01-01T23:28:56.782Z",
+            "endTime": "2018-12-05T10:50:09.142Z"
+        },
+        "desc": "This field is optional, please like and subscribe to my cab!",
+        "__v": 0
+    }
+}
+```
+* `success`: `true` if the data was updated in the database successfully, `false` otherwise.
+* `data`: The updated data entry. Returned only if `success` is `true`.
