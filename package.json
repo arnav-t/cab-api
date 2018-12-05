@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/arnav-t/cab-api/issues"
   },
-  "homepage": "https://github.com/arnav-t/cab-api#readme"
+  "homepage": "https://github.com/arnav-t/cab-api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.14"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
+  }
 }
