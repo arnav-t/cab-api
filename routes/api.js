@@ -4,8 +4,29 @@ const Cab = require('../models/cab');
 
 // Get all cabs
 router.get('/', (req, res) => {
-	console.log('Yo yo yo!');
-	res.send({success: true});
+	Cab.find({}).then(cabs => {
+		res.send({
+			success: true,
+			data: cabs
+		});
+	});
+});
+
+// Get cabs with given time in the slot
+router.get('/search', (req,res) => {
+	let time = Date.parse(req.query.time);
+	
+	Cab.find({
+		$and : [
+			{ "slot.startTime" : { $lte : time } },
+			{ "slot.endTime" : {$gte : time} }
+		]
+	}).exec((_err, cabs) => {
+		res.send({
+			success: true,
+			data: cabs
+		});
+	});
 });
 
 // Add a cab
@@ -37,7 +58,7 @@ router.delete('/delete/:id', (req,res) => {
 				success: false
 			});
 	});
-})
+});
 
 // Update a cab
 router.put('/update/:id', (req,res) => {
@@ -52,7 +73,7 @@ router.put('/update/:id', (req,res) => {
 				success: false
 			});
 	});
-})
+});
 
 // Export router
 module.exports = router;
