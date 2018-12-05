@@ -26,7 +26,22 @@ router.post('/add', (req, res) => {
 
 // Delete a cab
 router.delete('/delete/:id', (req,res) => {
-	Cab.findByIdAndRemove({_id: req.params.id}). then(cab => {
+	Cab.findByIdAndRemove({_id: req.params.id}).then(cab => {
+		if(cab !== null)
+			res.send({
+				success: true,
+				data: cab
+			});
+		else
+			res.status(404).send({
+				success: false
+			});
+	});
+})
+
+// Update a cab
+router.put('/update/:id', (req,res) => {
+	Cab.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true}).then(cab => {
 		if(cab !== null)
 			res.send({
 				success: true,
