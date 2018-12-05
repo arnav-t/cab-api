@@ -1,6 +1,38 @@
 #  :poultry_leg: CASA: **CA**b **S**haring **A**pi
 API for cab sharing posts. Currently work in progress.
 # Methods
+## Getting all offers (GET to `/api`)
+Send a get request to `/api` to fetch all cab offers.     
+Response data: 
+* `success`: `true` if the operation was successful, `false` otherwise.
+* `data`: All data entries. Returned only if `success` is `true`.
+## Getting all offers matching a given time (GET to `/api/search`)
+Send a get request as `/api/search?time={time}` with the query parameter `time` set to the wanted time (in JSON format for Javascript dates e.g `2018-01-01T23:28:56.782Z`).     
+Response data:
+```javascript
+{
+    "success": true,
+    "data": [
+        {
+            "_id": "5c07f648e86cc02018806f51",
+            "name": "Test Person",
+            "phone": "9988776655",
+            "email": "test@gmail.com",
+            "source": "IIT Kharagpur",
+            "dest": "Kolkata Airport",
+            "slot": {
+                "_id": "5c07f648e86cc02018806f52",
+                "startTime": "2010-01-01T23:28:56.782Z",
+                "endTime": "2012-12-05T10:50:09.142Z"
+            },
+            "desc": "This field is optional, please like and subscribe to my cab!",
+            "__v": 0
+        }
+    ]
+}
+```
+* `success`: `true` if the query was successful, `false` otherwise.
+* `data`: The matching data entries. Returned only if `success` is `true`.
 ## Adding a new offer (POST to `/api/add`)
 Post JSON data to `/api/add` with the following format to add a new cab sharing offer.
 ```javascript
