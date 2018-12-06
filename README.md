@@ -1,5 +1,20 @@
 #  :poultry_leg: CASA: **CA**b **S**haring **A**pi
 API for cab sharing posts. Currently work in progress.
+# Running locally
+## Set up
+[Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [Docker Compose](https://docs.docker.com/compose/install/) are required to run the app using Docker containers.
+```bash
+git clone https://github.com/arnav-t/cab-api.git
+cd cab-api
+```
+## Running app
+```bash
+sudo docker-compose up
+```
+## Stopping app
+```bash
+sudo docker-compose down
+```
 # Methods
 ## Getting all offers (GET to `/api`)
 Send a get request to `/api` to fetch all cab offers.     
