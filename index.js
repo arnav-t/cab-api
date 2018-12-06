@@ -7,7 +7,7 @@ let port = 4000;
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/cabs');
+mongoose.connect('mongodb://mongo:27018/cabs');
 mongoose.Promise = global.Promise;
 
 // Use body parser
